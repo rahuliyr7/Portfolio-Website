@@ -1,0 +1,46 @@
+body{
+    background-color:antiquewhite;
+
+    font-family: Arial, sans-serif;
+    line-height:  1.6em;
+    margin: 5em;
+}
+
+#photo{
+   margin-left: 0;
+   margin-right:auto;
+   width:100px;
+   height:100px;
+   border: 4px groove lightskyblue;
+   padding:0px
+}
+
+h1{
+font-family:'Trebuchet MS' ;
+}
+
+h2{
+font-family:'Trebuchet MS' ;
+}
+
+nav{ text-align: left;margin-top:2em}
+nav a{ 
+    font-size: medium;
+    font-style: italic;
+}
+.section{
+    border-right:5px lightskyblue solid;
+       border-left:5px lightskyblue solid;
+          border-top:5px lightskyblue solid;
+             border-bottom:5px lightskyblue solid;
+             border-width:2px;
+             border-style:groove;
+
+             padding-top:15px;
+             padding-bottom:15px;
+             padding-right:15px;
+             padding-left:15px;
+}
+footer{
+    text-align: left;
+}
