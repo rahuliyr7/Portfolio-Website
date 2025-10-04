@@ -3,7 +3,7 @@ body{
 
     font-family: Arial, sans-serif;
     line-height:  1.6em;
-    margin: 5em;
+    margin: 5em 5em 5em 2em;
 }
 
 #photo{
@@ -21,6 +21,7 @@ font-family:'Trebuchet MS' ;
 
 h2{
 font-family:'Trebuchet MS' ;
+padding-top:20px;
 }
 
 nav{ text-align: left;margin-top:2em}
@@ -29,17 +30,17 @@ nav a{
     font-style: italic;
 }
 .section{
-    border-right:5px lightskyblue solid;
-       border-left:5px lightskyblue solid;
-          border-top:5px lightskyblue solid;
-             border-bottom:5px lightskyblue solid;
-             border-width:2px;
-             border-style:groove;
+    border: 3px groove lightskyblue;
+    border-radius: 5px;
+    padding:15px;
+}
+ul{
+    padding: left 2rem;
+}
 
-             padding-top:15px;
-             padding-bottom:15px;
-             padding-right:15px;
-             padding-left:15px;
+li{
+    line-height: 2.5em;
+    
 }
 footer{
     text-align: left;
