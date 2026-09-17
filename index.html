@@ -2,74 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content ="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rahul Iyer — Networking & Information Security student at NJIT. Portfolio, projects, and experience.">
+    <title>Rahul Iyer — Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
-
 <body>
-    <h1>Resume</h1>
-    <img id ="photo" src ="rahuliyerheadshotoct2025.jpg" alt = "Photo of Me" width="100" height="100" >
-    <nav>
-        <a href="#summary">Summary</a>
-         <a href="#education">Education</a>
-          <a href="#workexp">Work</a>
-           <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-             <a href="#achievements">Achievements</a>
-              <a href="#hobbies">Hobbies</a>
-               <a href="#contactinfo">Contact Information</a>
-    </nav>
-    <section class = "section">
-    <h2 id="summary">Summary</h2>
-    <p>I am a Information Technology Student with a specialization in Networking and Information Security at NJIT </p>
 
-    <h2 id ="education">Education</h2>
-    <p>Bridgewater Raritan High School   Diploma September, 2017 - June,         2021 Bridgewater, NJ</p>
-    <p> Kean University     Computer Science coursework September, 2023 - December, 2024        Union, NJ</p>
-    <p>NJIT Network and Information Security Specialization January, 2025 - Expected Graduation December, 2026      Newark, NJ</p>
-    <h2 id = "workexp">Work Experience</h2>
-    <p> Dunkin' Crew Member August 2023 - Currently Employed </p>
-    <ul>
-        <li>Took orders accurately and handled transactions quickly</li>
-        <li>Helped train new members and kept the workspace organized and clean</li>
-        <li>Remained composed and focused during peak rush times ensuring smooth service</li>
-        <li>Effectively utilized store technology for inventory, payment, till and so on.</li>
-    </ul>
-    <h2 id="projects">Projects</h2>
-    <p>Cowrie Honeypot on Raspberry Pi 5</p>
-    <ul>
-        <li>Deployed Cowrie SSH/Telnet honeypot on Raspberry Pi 5 to simulate attacker sessions and
-            monitor malicious activity.</li>
-        <li>Configured authentication methods (HoneyPotAuthRandom, UserDB, HoneyPotAuthAlways) to
-            study brute-force and credential-based login attempts.</li>
-        <li>Collected and analyzed SSH logs of incoming connections, login attempts, and command activity
-            to evaluate attacker behavior and system response.</li>
-        <li>Resolved configuration and permission issues to ensure accurate logging, simulation, and
-            attacker interaction tracking</li>
-    </ul>
-    <h2 id = "skills">Skills</h2>
-    <ul>
-        <li>Programming: Java (OOP), Python, Data Structures</li>
-        <li>Tools: VS Code, Eclipse, Cisco Packet Tracer</li>
-        <li>Basic Web Development: HTML, CSS, JavaScript, SQL</li>
-        <li>Networking and E-Commerce Concepts</li>
-    </ul>
-    <h2 id ="achievements">Achievements</h2>
-    <p>Skyland Conference All Division Honorable Mention Men's Soccer</p>
-    <h2 id ="hobbies">Hobbies</h2>
-    <p>I like to play golf and soccer with my friends along with trying new foods, spending time with my friends family, and most importantly hanging with my cat Benji</p>
-    <h2 id = "contactinfo"> Contact Information</h2>
-    <ul>
-    <li> Email:rti@njit.edu</li>
-      <li>  Github: <a href ="https://github.com/rahuliyr7">github.com/rahuliyr7</a></li>
-      <li>  Linkedln: <a href ="https://www.linkedin.com/in/rahuliyr">linkedin.com/rahuliyr</a></li>
-       <li> Location: Bridgewater New Jersey</li>
-    </ul>
+    <nav class="topnav">
+        <span class="brand">&gt; rahul.iyer</span>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#github">Projects</a>
+            <a href="#workexp">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contactinfo">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <img id="photo" src="rahuliyerheadshotoct2025.jpg" alt="Photo of Rahul Iyer" width="120" height="120">
+        <div class="hero-text">
+            <p class="eyebrow">// Networking &amp; Information Security</p>
+            <h1>Rahul Iyer</h1>
+            <p class="tagline">IT student at NJIT specializing in networking and information security. I build and break small systems — like SSH honeypots — to understand how attacks actually happen.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#github">See live projects</a>
+                <a class="btn btn-outline" href="#contactinfo">Get in touch</a>
+            </div>
+            <p class="status-line"><span class="pulse-dot"></span> NJIT — Network &amp; Info Security, expected Dec 2026</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" id="about">
+            <h2><span class="tag">01</span> About</h2>
+            <p>I'm an Information Technology student with a specialization in Networking and Information Security at NJIT. I'm interested in how systems get attacked and defended in practice — from honeypots to network configuration — and I like learning by building things I can break and fix myself.</p>
         </section>
+
+        <section class="section" id="github">
+            <h2><span class="tag">02</span> Live from GitHub</h2>
+            <p class="section-sub" id="github-status">Loading latest repositories…</p>
+            <div class="repo-grid" id="github-grid"></div>
+        </section>
+
+        <section class="section" id="featured-project">
+            <h2><span class="tag">03</span> Featured Project</h2>
+            <div class="project-card">
+                <div class="project-card-head">
+                    <h3>Cowrie Honeypot on Raspberry Pi 5</h3>
+                    <span class="pill pill-status">Completed</span>
+                </div>
+                <div class="tag-row">
+                    <span class="pill">Raspberry Pi 5</span>
+                    <span class="pill">Cowrie</span>
+                    <span class="pill">SSH / Telnet</span>
+                    <span class="pill">Log Analysis</span>
+                </div>
+                <ul>
+                    <li>Deployed Cowrie SSH/Telnet honeypot on Raspberry Pi 5 to simulate attacker sessions and monitor malicious activity.</li>
+                    <li>Configured authentication methods (HoneyPotAuthRandom, UserDB, HoneyPotAuthAlways) to study brute-force and credential-based login attempts.</li>
+                    <li>Collected and analyzed SSH logs of incoming connections, login attempts, and command activity to evaluate attacker behavior and system response.</li>
+                    <li>Resolved configuration and permission issues to ensure accurate logging, simulation, and attacker interaction tracking.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="workexp">
+            <h2><span class="tag">04</span> Work Experience</h2>
+            <div class="project-card">
+                <div class="project-card-head">
+                    <h3>Dunkin' — Crew Member</h3>
+                    <span class="pill pill-status">Aug 2023 – Present</span>
+                </div>
+                <ul>
+                    <li>Took orders accurately and handled transactions quickly.</li>
+                    <li>Helped train new members and kept the workspace organized and clean.</li>
+                    <li>Remained composed and focused during peak rush times, ensuring smooth service.</li>
+                    <li>Effectively utilized store technology for inventory, payment, and till operations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="education">
+            <h2><span class="tag">05</span> Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p class="timeline-title">NJIT — Network and Information Security Specialization</p>
+                    <p class="timeline-meta">Jan 2025 – Expected Dec 2026 · Newark, NJ</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Kean University — Computer Science coursework</p>
+                    <p class="timeline-meta">Sep 2023 – Dec 2024 · Union, NJ</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Bridgewater-Raritan High School — Diploma</p>
+                    <p class="timeline-meta">Sep 2017 – Jun 2021 · Bridgewater, NJ</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <h2><span class="tag">06</span> Skills</h2>
+            <div class="tag-row">
+                <span class="pill">Java (OOP)</span>
+                <span class="pill">Python</span>
+                <span class="pill">Data Structures</span>
+                <span class="pill">HTML / CSS / JavaScript</span>
+                <span class="pill">SQL</span>
+                <span class="pill">VS Code</span>
+                <span class="pill">Eclipse</span>
+                <span class="pill">Cisco Packet Tracer</span>
+                <span class="pill">Networking</span>
+                <span class="pill">E-Commerce Concepts</span>
+            </div>
+        </section>
+
+        <section class="section" id="achievements">
+            <h2><span class="tag">07</span> Achievements</h2>
+            <p>Skyland Conference All-Division Honorable Mention — Men's Soccer</p>
+        </section>
+
+        <section class="section" id="hobbies">
+            <h2><span class="tag">08</span> Hobbies</h2>
+            <p>I like to play golf and soccer with my friends, try new foods, spend time with my friends and family, and — most importantly — hang out with my cat Benji.</p>
+        </section>
+
+        <section class="section" id="contactinfo">
+            <h2><span class="tag">09</span> Contact</h2>
+            <ul class="contact-list">
+                <li>Email: <a href="mailto:rti@njit.edu">rti@njit.edu</a></li>
+                <li>GitHub: <a href="https://github.com/rahuliyr7" target="_blank" rel="noopener">github.com/rahuliyr7</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/rahuliyr" target="_blank" rel="noopener">linkedin.com/rahuliyr</a></li>
+                <li>Location: Bridgewater, NJ</li>
+            </ul>
+        </section>
+    </main>
+
     <footer>
-        <p>2025 Rahul Iyer</p>
+        <p>© 2025 Rahul Iyer</p>
     </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
