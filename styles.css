@@ -329,6 +329,121 @@ li{
     border-color: rgba(74, 222, 128, 0.35);
 }
 
+/* Pipeline diagrams */
+.pipeline{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.node{
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    border-radius: 8px;
+    padding: 0.65rem 0.6rem;
+    text-align: center;
+    flex: 1 1 110px;
+    min-width: 108px;
+}
+
+.node-icon{
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.node-label{
+    font-size: 0.76rem;
+    color: var(--text);
+    line-height: 1.35;
+}
+
+.node-label small{
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.66rem;
+    margin-top: 0.2rem;
+    line-height: 1.35;
+}
+
+.node-accent{ border-color: rgba(56, 189, 248, 0.4); }
+.node-accent2{ border-color: rgba(74, 222, 128, 0.4); }
+.node-result{
+    border-color: var(--accent);
+    background: rgba(74, 222, 128, 0.06);
+}
+
+.arrow{
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    flex: 0 0 auto;
+}
+
+.branch{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1 1 120px;
+}
+
+.branch .node{ min-width: auto; }
+
+@media (max-width: 700px){
+    .pipeline{ flex-direction: column; align-items: stretch; }
+    .arrow{ align-self: center; transform: rotate(90deg); }
+    .branch{ flex-direction: row; flex-wrap: wrap; }
+}
+
+.stat-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0.5rem 0 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.stat{
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num{
+    font-family: var(--mono);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.stat-label{
+    font-size: 0.76rem;
+    color: var(--text-dim);
+}
+
+.repo-note{
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 1rem 0 0;
+}
+
+.repo-note a{
+    color: var(--accent-2);
+}
+
+.skill-group-label{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin: 1.25rem 0 0.5rem;
+}
+
+.skill-group-label:first-of-type{
+    margin-top: 0;
+}
+
 /* Timeline (education) */
 .timeline{
     display: flex;

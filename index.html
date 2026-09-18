@@ -26,7 +26,7 @@
         <div class="hero-text">
             <p class="eyebrow">// Networking &amp; Information Security</p>
             <h1>Rahul Iyer</h1>
-            <p class="tagline">IT student at NJIT specializing in networking and information security. I build and break small systems — like SSH honeypots — to understand how attacks actually happen.</p>
+            <p class="tagline">IT student at NJIT specializing in networking and information security. I build and break small systems — an SSH honeypot pulling real attacker traffic on DigitalOcean, an LLM fuzzer that stress-tests prompt-injection defenses — to understand how attacks actually happen.</p>
             <div class="hero-actions">
                 <a class="btn btn-primary" href="#github">See live projects</a>
                 <a class="btn btn-outline" href="#contactinfo">Get in touch</a>
@@ -43,53 +43,180 @@
 
         <section class="section" id="github">
             <h2><span class="tag">02</span> Live from GitHub</h2>
-            <p class="section-sub" id="github-status">Loading latest repositories…</p>
+            <p class="section-sub" id="github-status">Loading hand-picked repositories…</p>
             <div class="repo-grid" id="github-grid"></div>
         </section>
 
-        <section class="section" id="featured-project">
-            <h2><span class="tag">03</span> Featured Project</h2>
+        <section class="section" id="honeypot-project">
+            <h2><span class="tag">03</span> SSH Honeypot Threat Intelligence</h2>
             <div class="project-card">
                 <div class="project-card-head">
-                    <h3>Cowrie Honeypot on Raspberry Pi 5</h3>
-                    <span class="pill pill-status">Completed</span>
+                    <h3>Cowrie honeypot → threat intel pipeline</h3>
+                    <span class="pill pill-status">Jul 2025 – Present</span>
                 </div>
                 <div class="tag-row">
-                    <span class="pill">Raspberry Pi 5</span>
                     <span class="pill">Cowrie</span>
-                    <span class="pill">SSH / Telnet</span>
-                    <span class="pill">Log Analysis</span>
+                    <span class="pill">Linux / systemd</span>
+                    <span class="pill">DigitalOcean</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Bash / jq</span>
+                    <span class="pill">ASN Enrichment</span>
                 </div>
+                <p>Started as a local Raspberry Pi 5 deployment, then moved to a DigitalOcean VPS in September 2026 to get past home-network and access-control limits. Real internet-facing traffic in, structured threat intel out.</p>
+
+                <div class="pipeline">
+                    <div class="node">
+                        <span class="node-icon">🌐</span>
+                        <span class="node-label">Internet-wide scanners<br><small>Real unsolicited SSH traffic</small></span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="node node-accent">
+                        <span class="node-icon">🛡️</span>
+                        <span class="node-label">Cowrie honeypot<br><small>Port 22 → forwarded to :2222<br>systemd-supervised</small></span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="node">
+                        <span class="node-icon">📄</span>
+                        <span class="node-label">Session logs<br><small>JSON, per-connection</small></span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="node node-accent2">
+                        <span class="node-icon">🔎</span>
+                        <span class="node-label">Log analyzer<br><small>Python + ASN lookup</small></span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="node node-result">
+                        <span class="node-icon">🎯</span>
+                        <span class="node-label">Threat intel<br><small>Clusters &amp; campaigns</small></span>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat"><span class="stat-num">52,700+</span><span class="stat-label">sessions captured</span></div>
+                    <div class="stat"><span class="stat-num">2,365</span><span class="stat-label">unique source IPs</span></div>
+                    <div class="stat"><span class="stat-num">7-host</span><span class="stat-label">coordinated scanning cluster found</span></div>
+                    <div class="stat"><span class="stat-num">10 days</span><span class="stat-label">capture window</span></div>
+                </div>
+
                 <ul>
-                    <li>Deployed Cowrie SSH/Telnet honeypot on Raspberry Pi 5 to simulate attacker sessions and monitor malicious activity.</li>
-                    <li>Configured authentication methods (HoneyPotAuthRandom, UserDB, HoneyPotAuthAlways) to study brute-force and credential-based login attempts.</li>
-                    <li>Collected and analyzed SSH logs of incoming connections, login attempts, and command activity to evaluate attacker behavior and system response.</li>
-                    <li>Resolved configuration and permission issues to ensure accurate logging, simulation, and attacker interaction tracking.</li>
+                    <li>ASN-enriched the top attacker IPs, surfacing a coordinated 7-host scanning cluster and a distinct hardware/GPU-profiling reconnaissance campaign inside post-auth command logs.</li>
                 </ul>
+                <p class="repo-note">🔒 The current DigitalOcean deployment repo is private. <a href="https://github.com/rahuliyr7/Security-Log-Analyzer" target="_blank" rel="noopener">View the public log-analyzer code →</a></p>
+            </div>
+        </section>
+
+        <section class="section" id="scanner-project">
+            <h2><span class="tag">04</span> Automated LLM Vulnerability Fuzzer</h2>
+            <div class="project-card">
+                <div class="project-card-head">
+                    <h3>Prompt-injection scanner for local LLMs</h3>
+                    <span class="pill pill-status">Jun 2026 – Present</span>
+                </div>
+                <div class="tag-row">
+                    <span class="pill">Python</span>
+                    <span class="pill">Ollama SDK</span>
+                    <span class="pill">Regex</span>
+                    <span class="pill">OWASP LLM Top 10</span>
+                    <span class="pill">MITRE ATLAS</span>
+                </div>
+                <p>A local red-teaming harness that plants a decoy secret in a target model's system prompt, then fires 9 obfuscated exfiltration payloads at it — Base64, leetspeak, token smuggling, reversal — and grades every response two independent ways so you see <em>how</em> a guardrail fails, not just whether it does.</p>
+
+                <div class="pipeline">
+                    <div class="node">
+                        <span class="node-icon">🧨</span>
+                        <span class="node-label">9 attack vectors<br><small>Base64, leetspeak, smuggling…</small></span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="node node-accent">
+                        <span class="node-icon">🤖</span>
+                        <span class="node-label">Target model<br><small>phi3, via Ollama</small></span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="branch">
+                        <div class="node">
+                            <span class="node-icon">🧵</span>
+                            <span class="node-label">String matcher<br><small>10 encodings + fuzzy match</small></span>
+                        </div>
+                        <div class="node">
+                            <span class="node-icon">⚖️</span>
+                            <span class="node-label">LLM judge<br><small>llama3 compliance audit</small></span>
+                        </div>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="node node-result">
+                        <span class="node-icon">🚦</span>
+                        <span class="node-label">Verdict<br><small>CRITICAL / WARNING / SAFE</small></span>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="stat"><span class="stat-num">9</span><span class="stat-label">attack vectors</span></div>
+                    <div class="stat"><span class="stat-num">10</span><span class="stat-label">encodings checked per response</span></div>
+                    <div class="stat"><span class="stat-num">2</span><span class="stat-label">independent judges (string + LLM)</span></div>
+                </div>
+
+                <ul>
+                    <li>Maps every finding to OWASP LLM01/LLM02/LLM05 and MITRE ATLAS techniques, and computes Attack Success Rate (ASR) per vector from run logs.</li>
+                </ul>
+                <p class="repo-note"><a href="https://github.com/rahuliyr7/prompt-injection-scanner" target="_blank" rel="noopener">View on GitHub →</a></p>
             </div>
         </section>
 
         <section class="section" id="workexp">
-            <h2><span class="tag">04</span> Work Experience</h2>
+            <h2><span class="tag">05</span> Experience</h2>
+
             <div class="project-card">
                 <div class="project-card-head">
-                    <h3>Dunkin' — Crew Member</h3>
-                    <span class="pill pill-status">Aug 2023 – Present</span>
+                    <h3>Specialist, Apple</h3>
+                    <span class="pill pill-status">Jul 2026 – Present</span>
+                </div>
+                <p class="timeline-meta">Bridgewater, NJ</p>
+                <ul>
+                    <li>Perform intake for hardware repairs: run diagnostics, document reported symptoms and device condition, and route cases to technicians or service escalation.</li>
+                    <li>Triage hardware versus software faults through structured troubleshooting, resolving software-level issues on the spot rather than escalating them to repair.</li>
+                    <li>Guide customers through device setup, data migration, and account and access recovery, explaining technical concepts in plain language.</li>
+                    <li>Match customers to products and service plans based on their technical requirements and existing setup.</li>
+                </ul>
+            </div>
+
+            <div class="project-card" style="margin-top:1rem;">
+                <div class="project-card-head">
+                    <h3>Project Manager and Developer, Cortexa Capstone</h3>
+                    <span class="pill pill-status">Jul 2026 – Aug 2026</span>
+                </div>
+                <p class="timeline-meta">NJIT, Newark, NJ · Startup-sponsored</p>
+                <div class="tag-row">
+                    <span class="pill">Java (Spring Boot)</span>
+                    <span class="pill">Python (FastAPI)</span>
+                    <span class="pill">Next.js</span>
+                    <span class="pill">SQL</span>
                 </div>
                 <ul>
-                    <li>Took orders accurately and handled transactions quickly.</li>
-                    <li>Helped train new members and kept the workspace organized and clean.</li>
-                    <li>Remained composed and focused during peak rush times, ensuring smooth service.</li>
-                    <li>Effectively utilized store technology for inventory, payment, and till operations.</li>
+                    <li>Led a 4-person team through 3 sprints and 55 Jira tickets to build an AI research-discovery platform over a corpus of ~3 million academic papers, owning sprint planning, sponsor communication, and final handoff.</li>
+                    <li>Audited an inherited production codebase and documented 17 verified findings, 5 of them critical, spanning secrets exposure, authentication gaps, and a 4-service infrastructure inventory (Vercel, DigitalOcean, PlanetScale, Spring Boot).</li>
+                    <li>Remediated backend vulnerabilities in Spring Boot: authorization enforcement on profile writes, JWT single-session token revocation, and an end-to-end password reset flow.</li>
+                    <li>Reduced exact-title search latency from 25 seconds to 14 milliseconds on a 3-million-row PostgreSQL table by replacing wildcard pattern matching with a GIN full-text index and rewritten queries, verified with EXPLAIN ANALYZE.</li>
+                </ul>
+            </div>
+
+            <div class="project-card" style="margin-top:1rem;">
+                <div class="project-card-head">
+                    <h3>Store Associate, Unbound Golf</h3>
+                    <span class="pill pill-status">May 2026 – Aug 2026</span>
+                </div>
+                <p class="timeline-meta">Branchburg, NJ</p>
+                <ul>
+                    <li>Managed daily deployment, patch management, and structured shutdown of a 5-bay facility running Trackman launch monitors, maintaining bay availability throughout operating hours.</li>
+                    <li>Troubleshot network and device issues in real time, isolating faults, resetting equipment, and researching fixes to restore bays during live customer sessions.</li>
                 </ul>
             </div>
         </section>
 
         <section class="section" id="education">
-            <h2><span class="tag">05</span> Education</h2>
+            <h2><span class="tag">06</span> Education</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <p class="timeline-title">NJIT — Network and Information Security Specialization</p>
+                    <p class="timeline-title">NJIT — B.S. Information Technology, Network and Information Security Specialization</p>
                     <p class="timeline-meta">Jan 2025 – Expected Dec 2026 · Newark, NJ</p>
                 </div>
                 <div class="timeline-item">
@@ -101,36 +228,81 @@
                     <p class="timeline-meta">Sep 2017 – Jun 2021 · Bridgewater, NJ</p>
                 </div>
             </div>
+            <div class="tag-row" style="margin-top:1.25rem;">
+                <span class="pill pill-status">CompTIA Security+ — Expected Oct 2026</span>
+            </div>
         </section>
 
         <section class="section" id="skills">
-            <h2><span class="tag">06</span> Skills</h2>
+            <h2><span class="tag">07</span> Skills</h2>
+
+            <p class="skill-group-label">IT Support &amp; Operations</p>
             <div class="tag-row">
-                <span class="pill">Java (OOP)</span>
-                <span class="pill">Python</span>
-                <span class="pill">Data Structures</span>
-                <span class="pill">HTML / CSS / JavaScript</span>
+                <span class="pill">Hardware/software troubleshooting</span>
+                <span class="pill">Device setup &amp; deployment</span>
+                <span class="pill">Data migration</span>
+                <span class="pill">Access recovery</span>
+                <span class="pill">Ticket triage &amp; escalation</span>
+                <span class="pill">Patch management</span>
+            </div>
+
+            <p class="skill-group-label">Systems &amp; Networking</p>
+            <div class="tag-row">
+                <span class="pill">Windows</span>
+                <span class="pill">macOS / iOS</span>
+                <span class="pill">Linux (Ubuntu/Debian)</span>
+                <span class="pill">TCP/IP</span>
+                <span class="pill">DNS</span>
+                <span class="pill">SSH</span>
+                <span class="pill">systemd</span>
+                <span class="pill">iptables</span>
+            </div>
+
+            <p class="skill-group-label">Security</p>
+            <div class="tag-row">
+                <span class="pill">Security auditing</span>
+                <span class="pill">Vulnerability fuzzing</span>
+                <span class="pill">Prompt-injection evaluation</span>
+                <span class="pill">Honeypot deployment</span>
+                <span class="pill">Threat intelligence</span>
+                <span class="pill">ASN enrichment</span>
+                <span class="pill">Log analysis</span>
+            </div>
+
+            <p class="skill-group-label">Programming &amp; Databases</p>
+            <div class="tag-row">
+                <span class="pill">Python (pandas, JSON, re)</span>
+                <span class="pill">Java (Spring Boot)</span>
+                <span class="pill">JavaScript (Next.js)</span>
+                <span class="pill">C#</span>
                 <span class="pill">SQL</span>
-                <span class="pill">VS Code</span>
-                <span class="pill">Eclipse</span>
-                <span class="pill">Cisco Packet Tracer</span>
-                <span class="pill">Networking</span>
-                <span class="pill">E-Commerce Concepts</span>
+                <span class="pill">Bash / jq</span>
+                <span class="pill">PostgreSQL</span>
+            </div>
+
+            <p class="skill-group-label">Tools</p>
+            <div class="tag-row">
+                <span class="pill">Jira</span>
+                <span class="pill">Git</span>
+                <span class="pill">DigitalOcean</span>
+                <span class="pill">Raspberry Pi</span>
+                <span class="pill">Ollama SDK</span>
+                <span class="pill">Excel</span>
             </div>
         </section>
 
         <section class="section" id="achievements">
-            <h2><span class="tag">07</span> Achievements</h2>
+            <h2><span class="tag">08</span> Achievements</h2>
             <p>Skyland Conference All-Division Honorable Mention — Men's Soccer</p>
         </section>
 
         <section class="section" id="hobbies">
-            <h2><span class="tag">08</span> Hobbies</h2>
+            <h2><span class="tag">09</span> Hobbies</h2>
             <p>I like to play golf and soccer with my friends, try new foods, spend time with my friends and family, and — most importantly — hang out with my cat Benji.</p>
         </section>
 
         <section class="section" id="contactinfo">
-            <h2><span class="tag">09</span> Contact</h2>
+            <h2><span class="tag">10</span> Contact</h2>
             <ul class="contact-list">
                 <li>Email: <a href="mailto:rti@njit.edu">rti@njit.edu</a></li>
                 <li>GitHub: <a href="https://github.com/rahuliyr7" target="_blank" rel="noopener">github.com/rahuliyr7</a></li>

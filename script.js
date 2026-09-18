@@ -1,5 +1,15 @@
 const GITHUB_USERNAME = "rahuliyr7";
 
+// Hand-picked, "actually worth showing" repos — not every repo in the account
+// (class assignments and forks are excluded on purpose).
+const FEATURED_REPOS = ["prompt-injection-scanner", "Security-Log-Analyzer"];
+
+// Fallback descriptions for repos whose GitHub description field is empty.
+const DESCRIPTION_OVERRIDES = {
+    "Security-Log-Analyzer":
+        "Python analyzer for Cowrie honeypot JSON logs — surfaces credential patterns, attacker IPs, and attack timing.",
+};
+
 document.addEventListener("DOMContentLoaded", loadGitHubProjects);
 
 async function loadGitHubProjects() {
@@ -7,27 +17,24 @@ async function loadGitHubProjects() {
     const status = document.getElementById("github-status");
 
     try {
-        const res = await fetch(
-            `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=6`
+        const repos = await Promise.all(
+            FEATURED_REPOS.map(async (name) => {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${name}`);
+                if (!res.ok) throw new Error(`GitHub API responded ${res.status} for ${name}`);
+                return res.json();
+            })
         );
-        if (!res.ok) throw new Error(`GitHub API responded ${res.status}`);
-
-        const repos = (await res.json()).filter((r) => !r.fork).slice(0, 6);
-
-        if (!repos.length) {
-            status.textContent = "No public repositories yet — check back soon.";
-            return;
-        }
 
         grid.innerHTML = repos.map(repoCard).join("");
-        status.innerHTML = `<span class="pulse-dot" style="display:inline-block;margin-right:0.4rem;"></span>Live from GitHub · refreshed on page load`;
+        status.innerHTML = `<span class="pulse-dot" style="display:inline-block;margin-right:0.4rem;"></span>Hand-picked projects · live stats from GitHub`;
     } catch (err) {
-        status.textContent = "Live feed unavailable right now — view repos directly on GitHub.";
+        status.textContent = "Live feed unavailable right now — see the project write-ups below.";
     }
 }
 
 function repoCard(repo) {
-    const desc = repo.description ? escapeHTML(repo.description) : "No description provided.";
+    const override = DESCRIPTION_OVERRIDES[repo.name];
+    const desc = escapeHTML(override || repo.description || "No description provided.");
     return `
         <a class="repo-card" href="${repo.html_url}" target="_blank" rel="noopener">
             <div class="repo-card-top">
